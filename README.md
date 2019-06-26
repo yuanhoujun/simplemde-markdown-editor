@@ -114,6 +114,9 @@ simplemde.value("This text will appear in the editor");
 - **tabSize**: If set, customize the tab size. Defaults to `2`.
 - **toolbar**: If set to `false`, hide the toolbar. Defaults to the [array of icons](#toolbar-icons).
 - **toolbarTips**: If set to `false`, disable toolbar button tips. Defaults to `true`.
+- **isBottomBar** 标题栏是否在底部位置
+- **onDropImage** function(file)，参数为拖拽的File对象
+- **onPushEvent** function(value)，参数为发布的内容
 
 ```JavaScript
 // Most options demonstrate the non-default behavior
@@ -188,6 +191,19 @@ var simplemde = new SimpleMDE({
 	tabSize: 4,
 	toolbar: false,
 	toolbarTips: false,
+    isBottomBar: false, // toolbar位置
+    onDropImage: function(file) {
+        var curFile = new FileReader();
+        curFile.readAsDataURL(file);
+        // 读取文件信息
+        curFile.onload = function (e) {
+            console.log(curFile.result);
+        };
+    },
+    onPushEvent: function (value) {
+        // 发布的内容
+        console.log(value);
+    }
 });
 ```
 
