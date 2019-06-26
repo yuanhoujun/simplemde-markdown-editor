@@ -203,12 +203,19 @@ function toggleFullScreen(editor) {
 	// Update toolbar class
 	var wrap = cm.getWrapperElement();
 
-	if(!/fullscreen/.test(wrap.previousSibling.className)) {
-		wrap.previousSibling.className += " fullscreen";
+	if(editor.options.isBottomBar) {
+		if(!/fullscreen/.test(wrap.nextElementSibling.nextElementSibling.className)) {
+			wrap.nextElementSibling.nextElementSibling.className += " fullscreen";
+		} else {
+			wrap.nextElementSibling.nextElementSibling.className = wrap.nextElementSibling.nextElementSibling.className.replace(/\s*fullscreen\b/, "");
+		}
 	} else {
-		wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, "");
+		if(!/fullscreen/.test(wrap.previousSibling.className)) {
+			wrap.previousSibling.className += " fullscreen";
+		} else {
+			wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, "");
+		}
 	}
-
 
 	// Update toolbar button
 	if(editor.toolbarElements.fullscreen) {
@@ -686,6 +693,13 @@ function redo(editor) {
 	cm.focus();
 }
 
+
+function pushEditorData(editor) {
+	console.log("发布内容");
+	if(editor.options && editor.options.onPushEvent) {
+		editor.options.onPushEvent(editor.value());
+	}
+}
 
 /**
  * Toggle side by side preview
@@ -1258,6 +1272,13 @@ var toolbarBuiltInButtons = {
 		title: "Markdown Guide",
 		default: true
 	},
+	"save": {
+		name: "save",
+		action: pushEditorData,
+		className: "push-data",
+		title: "发布",
+		default: true
+	},
 	"separator-5": {
 		name: "separator-5"
 	},
@@ -1574,6 +1595,39 @@ SimpleMDE.prototype.render = function(el) {
 	setTimeout(function() {
 		temp_cm.refresh();
 	}.bind(temp_cm), 0);
+
+	var editorEl = this.codemirror.getWrapperElement();
+	// 监听拖拽事件
+	editorEl.addEventListener("dragover", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	editorEl.addEventListener("dragenter", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	editorEl.addEventListener("drop", function(e) {
+		// 必须要禁用浏览器默认事件
+		e.preventDefault();
+		e.stopPropagation();
+		var files = this.files || e.dataTransfer.files;
+
+		if(files && files.length > 0) {
+			var file = e.dataTransfer.files[0];
+			var nowFile = new FileReader();
+
+			nowFile.readAsDataURL(file);
+			console.log(e);
+			nowFile.onload = function(e) {
+				console.log(e);
+				if(options && options.onDropImage) {
+					options.onDropImage(nowFile.result);
+				}
+			};
+		}
+	});
 };
 
 // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem throw QuotaExceededError. We're going to detect this and set a variable accordingly.
@@ -1634,7 +1688,7 @@ SimpleMDE.prototype.autosave = function() {
 			}
 			m = m < 10 ? "0" + m : m;
 
-			el.innerHTML = "Autosaved: " + h + ":" + m + " " + dd;
+			el.innerHTML = "自动保存: " + h + ":" + m + " " + dd;
 		}
 
 		this.autosaveTimeoutId = setTimeout(function() {
@@ -1715,6 +1769,9 @@ SimpleMDE.prototype.createToolbar = function(items) {
 
 	var bar = document.createElement("div");
 	bar.className = "editor-toolbar";
+	if(this.options && this.options.isBottomBar) {
+		bar.style = "border-top: 0;border-bottom: 1px solid #bbb;border-radius: 0 0 4px 4px;";
+	}
 
 	var self = this;
 
@@ -1795,7 +1852,12 @@ SimpleMDE.prototype.createToolbar = function(items) {
 	});
 
 	var cmWrapper = cm.getWrapperElement();
-	cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+	if(this.options && this.options.isBottomBar) {
+		cmWrapper.parentNode.appendChild(bar);
+		cmWrapper.style = "border-radius: 4px 4px 0 0;";
+	} else {
+		cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+	}
 	return bar;
 };
 
@@ -1910,7 +1972,11 @@ SimpleMDE.prototype.createStatusbar = function(status) {
 
 	// Insert the status bar into the DOM
 	var cmWrapper = this.codemirror.getWrapperElement();
-	cmWrapper.parentNode.insertBefore(bar, cmWrapper.nextSibling);
+	if(options && options.isBottomBar) {
+		cmWrapper.parentNode.appendChild(bar);
+	} else {
+		cmWrapper.parentNode.insertBefore(bar, cmWrapper.nextSibling);
+	}
 	return bar;
 };
 
