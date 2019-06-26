@@ -50,9 +50,13 @@
 		showIcons: true,
 		spellChecker: true,
 		isBottomBar: false, // toolbar位置
-		onDropImage: function(image) {
-			// 拖拽后图片的base64码
-			console.log(image);
+		onDropImage: function(file) {
+            var curFile = new FileReader();
+			curFile.readAsDataURL(file);
+			// 读取文件信息
+			curFile.onload = function (e) {
+				console.log(curFile.result);
+			};
 		},
 		onPushEvent: function (value) {
 			// 发布的内容
