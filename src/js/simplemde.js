@@ -1616,16 +1616,9 @@ SimpleMDE.prototype.render = function(el) {
 
 		if(files && files.length > 0) {
 			var file = e.dataTransfer.files[0];
-			var nowFile = new FileReader();
-
-			nowFile.readAsDataURL(file);
-			console.log(e);
-			nowFile.onload = function(e) {
-				console.log(e);
-				if(options && options.onDropImage) {
-					options.onDropImage(nowFile.result);
-				}
-			};
+			if(options && options.onDropImage) {
+				options.onDropImage(file);
+			}
 		}
 	});
 };
