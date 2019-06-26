@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="debug/simplemde.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.13.0/styles/github-gist.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .g-mde {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+<div class="g-mde">
+    <textarea></textarea>
+</div>
+<script src="debug/simplemde.debug.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.13.1/highlight.min.js"></script>
+<script>
+	var simplemde = new SimpleMDE({
+		element: document.querySelector('textarea'),
+		autoDownloadFontAwesome:false,//true从默认地址引入fontawesome依赖 false需自行引入(国内用bootcdn更快点)
+		autofocus:true,
+		autosave: {
+			enabled: true,
+			uniqueId: "SimpleMDE",
+			delay: 3000,
+		},
+		blockStyles: {
+			bold: "**",
+			italic: "*",
+			code: "```"
+		},
+		forceSync: true,
+		hideIcons: false,
+		indentWithTabs: true,
+		lineWrapping: true,
+		renderingConfig:{
+			singleLineBreaks: false,
+			codeSyntaxHighlighting: true // 需要highlight依赖
+		},
+		showIcons: true,
+		spellChecker: true,
+		isBottomBar: false, // toolbar位置
+		onDropImage: function(file) {
+            var curFile = new FileReader();
+			curFile.readAsDataURL(file);
+			// 读取文件信息
+			curFile.onload = function (e) {
+				console.log(curFile.result);
+			};
+		},
+		onPushEvent: function (value) {
+			// 发布的内容
+			console.log(value);
+		}
+	});
+	// 默认开启预览模式
+	// simplemde.toggleSideBySide();
+</script>
+</body>
+</html>

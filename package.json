@@ -9,16 +9,16 @@
     "javascript",
     "wysiwyg"
   ],
-  "homepage": "https://github.com/NextStepWebs/simplemde-markdown-editor",
+  "homepage": "https://github.com/sparksuite/simplemde-markdown-editor",
   "main": "./src/js/simplemde.js",
   "license": "MIT",
-  "company": "Next Step Webs, Inc.",
+  "company": "Sparksuite, Inc.",
   "author": {
     "name": "Wes Cossick",
     "url": "http://www.WesCossick.com"
   },
   "bugs": {
-    "url": "https://github.com/NextStepWebs/simplemde-markdown-editor/issues"
+    "url": "https://github.com/sparksuite/simplemde-markdown-editor/issues"
   },
   "dependencies": {
     "codemirror": "*",
@@ -29,7 +29,7 @@
     "browserify": "*",
     "debug": "*",
     "eslint": "*",
-    "gulp": "*",
+    "gulp": "3.9.0",
     "gulp-concat": "*",
     "gulp-debug": "*",
     "gulp-eslint": "*",
@@ -43,6 +43,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NextStepWebs/simplemde-markdown-editor"
+    "url": "https://github.com/sparksuite/simplemde-markdown-editor"
   }
 }

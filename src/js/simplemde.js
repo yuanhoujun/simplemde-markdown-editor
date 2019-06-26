@@ -72,7 +72,7 @@ var getBindingName = function(f) {
 var isMobile = function() {
 	var check = false;
 	(function(a) {
-		if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+		if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\\-(n|u)|c55\/|capi|ccwa|cdm\\-|cell|chtm|cldc|cmd\\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\\-s|devi|dica|dmob|do(c|p)o|ds(12|\\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\\-|_)|g1 u|g560|gene|gf\\-5|g\\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\\-(m|p|t)|hei\\-|hi(pt|ta)|hp( i|ip)|hs\\-c|ht(c(\\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\\-(20|go|ma)|i230|iac( |\\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\\-[a-w])|libw|lynx|m1\\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\\-2|po(ck|rt|se)|prox|psio|pt\\-g|qa\\-a|qc(07|12|21|32|60|\\-[2-7]|i\\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\\-|oo|p\\-)|sdk\/|se(c(\\-|0|1)|47|mc|nd|ri)|sgh\\-|shar|sie(\\-|m)|sk\\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\\-|v\\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\\-|tdg\\-|tel(i|m)|tim\\-|t\\-mo|to(pl|sh)|ts(70|m\\-|m3|m5)|tx\\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\\-|your|zeto|zte\\-/i.test(a.substr(0, 4))) check = true;
 	})(navigator.userAgent || navigator.vendor || window.opera);
 	return check;
 };
@@ -96,11 +96,11 @@ function fixShortcut(name) {
  */
 function createIcon(options, enableTooltips, shortcuts) {
 	options = options || {};
-	var el = document.createElement("a");
+	var el = document.createElement("button");
 	enableTooltips = (enableTooltips == undefined) ? true : enableTooltips;
 
 	if(options.title && enableTooltips) {
-		el.title = createTootlip(options.title, options.action, shortcuts);
+		el.title = createTooltip(options.title, options.action, shortcuts);
 
 		if(isMac) {
 			el.title = el.title.replace("Ctrl", "⌘");
@@ -120,7 +120,7 @@ function createSep() {
 	return el;
 }
 
-function createTootlip(title, action, shortcuts) {
+function createTooltip(title, action, shortcuts) {
 	var actionName;
 	var tooltip = title;
 
@@ -171,7 +171,7 @@ function getState(cm, pos) {
 			ret.link = true;
 		} else if(data === "tag") {
 			ret.image = true;
-		} else if(data.match(/^header(\-[1-6])?$/)) {
+		} else if(data.match(/^header(\\-[1-6])?$/)) {
 			ret[data.replace("header", "heading")] = true;
 		}
 	}
@@ -203,20 +203,29 @@ function toggleFullScreen(editor) {
 	// Update toolbar class
 	var wrap = cm.getWrapperElement();
 
-	if(!/fullscreen/.test(wrap.previousSibling.className)) {
-		wrap.previousSibling.className += " fullscreen";
+	if(editor.options.isBottomBar) {
+		if(!/fullscreen/.test(wrap.nextElementSibling.nextElementSibling.className)) {
+			wrap.nextElementSibling.nextElementSibling.className += " fullscreen";
+		} else {
+			wrap.nextElementSibling.nextElementSibling.className = wrap.nextElementSibling.nextElementSibling.className.replace(/\s*fullscreen\b/, "");
+		}
 	} else {
-		wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, "");
+		if(!/fullscreen/.test(wrap.previousSibling.className)) {
+			wrap.previousSibling.className += " fullscreen";
+		} else {
+			wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, "");
+		}
 	}
 
-
 	// Update toolbar button
-	var toolbarButton = editor.toolbarElements.fullscreen;
+	if(editor.toolbarElements.fullscreen) {
+		var toolbarButton = editor.toolbarElements.fullscreen;
 
-	if(!/active/.test(toolbarButton.className)) {
-		toolbarButton.className += " active";
-	} else {
-		toolbarButton.className = toolbarButton.className.replace(/\s*active\s*/g, "");
+		if(!/active/.test(toolbarButton.className)) {
+			toolbarButton.className += " active";
+		} else {
+			toolbarButton.className = toolbarButton.className.replace(/\s*active\s*/g, "");
+		}
 	}
 
 
@@ -685,6 +694,13 @@ function redo(editor) {
 }
 
 
+function pushEditorData(editor) {
+	console.log("发布内容");
+	if(editor.options && editor.options.onPushEvent) {
+		editor.options.onPushEvent(editor.value());
+	}
+}
+
 /**
  * Toggle side by side preview
  */
@@ -795,8 +811,10 @@ function _replaceSelection(cm, active, startEnd, url) {
 	var text;
 	var start = startEnd[0];
 	var end = startEnd[1];
-	var startPoint = cm.getCursor("start");
-	var endPoint = cm.getCursor("end");
+	var startPoint = {},
+		endPoint = {};
+	Object.assign(startPoint, cm.getCursor("start"));
+	Object.assign(endPoint, cm.getCursor("end"));
 	if(url) {
 		end = end.replace("#url#", url);
 	}
@@ -896,26 +914,57 @@ function _toggleLine(cm, name) {
 	if(/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
 		return;
 
+	var listRegexp = /^(\s*)(\*|\\-|\+|\d*\.)(\s+)/;
+	var whitespacesRegexp = /^\s*/;
+
 	var stat = getState(cm);
 	var startPoint = cm.getCursor("start");
 	var endPoint = cm.getCursor("end");
 	var repl = {
-		"quote": /^(\s*)\>\s+/,
-		"unordered-list": /^(\s*)(\*|\-|\+)\s+/,
-		"ordered-list": /^(\s*)\d+\.\s+/
+		"quote": /^(\s*)\\>\s+/,
+		"unordered-list": listRegexp,
+		"ordered-list": listRegexp
 	};
-	var map = {
-		"quote": "> ",
-		"unordered-list": "* ",
-		"ordered-list": "1. "
+
+	var _getChar = function(name, i) {
+		var map = {
+			"quote": ">",
+			"unordered-list": "*",
+			"ordered-list": "%%i."
+		};
+
+		return map[name].replace("%%i", i);
 	};
+
+	var _checkChar = function(name, char) {
+		var map = {
+			"quote": "\\>",
+			"unordered-list": "\\*",
+			"ordered-list": "\\d+."
+		};
+		var rt = new RegExp(map[name]);
+
+		return char && rt.test(char);
+	};
+
+	var line = 1;
 	for(var i = startPoint.line; i <= endPoint.line; i++) {
 		(function(i) {
 			var text = cm.getLine(i);
 			if(stat[name]) {
 				text = text.replace(repl[name], "$1");
 			} else {
-				text = map[name] + text;
+				var arr = listRegexp.exec(text);
+				var char = _getChar(name, line);
+				if(arr !== null) {
+					if(_checkChar(name, arr[2])) {
+						char = "";
+					}
+					text = arr[1] + char + arr[3] + text.replace(whitespacesRegexp, "").replace(repl[name], "$1");
+				} else {
+					text = char + " " + text;
+				}
+				line += 1;
 			}
 			cm.replaceRange(text, {
 				line: i,
@@ -1008,7 +1057,7 @@ function _cleanBlock(cm) {
 
 	for(var line = startPoint.line; line <= endPoint.line; line++) {
 		text = cm.getLine(line);
-		text = text.replace(/^[ ]*([# ]+|\*|\-|[> ]+|[0-9]+(.|\)))[ ]*/, "");
+		text = text.replace(/^[ ]*([# ]+|\*|\\-|[> ]+|[0-9]+(.|\)))[ ]*/, "");
 
 		cm.replaceRange(text, {
 			line: line,
@@ -1223,6 +1272,13 @@ var toolbarBuiltInButtons = {
 		title: "Markdown Guide",
 		default: true
 	},
+	"save": {
+		name: "save",
+		action: pushEditorData,
+		className: "push-data",
+		title: "发布",
+		default: true
+	},
 	"separator-5": {
 		name: "separator-5"
 	},
@@ -1354,7 +1410,7 @@ function SimpleMDE(options) {
 
 
 	// Merging the promptTexts, with the given options
-	options.promptTexts = promptTexts;
+	options.promptTexts = extend({}, promptTexts, options.promptTexts || {});
 
 
 	// Merging the blockStyles, with the given options
@@ -1363,6 +1419,8 @@ function SimpleMDE(options) {
 
 	// Merging the shortcuts, with the given options
 	options.shortcuts = extend({}, shortcuts, options.shortcuts || {});
+
+	options.minHeight = options.minHeight || "300px";
 
 
 	// Change unique_id to uniqueId for backwards compatibility
@@ -1392,8 +1450,12 @@ function SimpleMDE(options) {
 SimpleMDE.prototype.markdown = function(text) {
 	if(marked) {
 		// Initialize
-		var markedOptions = {};
-
+		var markedOptions;
+		if(this.options && this.options.renderingConfig && this.options.renderingConfig.markedOptions) {
+			markedOptions = this.options.renderingConfig.markedOptions;
+		} else {
+			markedOptions = {};
+		}
 
 		// Update options
 		if(this.options && this.options.renderingConfig && this.options.renderingConfig.singleLineBreaks === false) {
@@ -1402,10 +1464,17 @@ SimpleMDE.prototype.markdown = function(text) {
 			markedOptions.breaks = true;
 		}
 
-		if(this.options && this.options.renderingConfig && this.options.renderingConfig.codeSyntaxHighlighting === true && window.hljs) {
-			markedOptions.highlight = function(code) {
-				return window.hljs.highlightAuto(code).value;
-			};
+		if(this.options && this.options.renderingConfig && this.options.renderingConfig.codeSyntaxHighlighting === true) {
+
+			/* Get HLJS from config or window */
+			var hljs = this.options.renderingConfig.hljs || window.hljs;
+
+			/* Check if HLJS loaded */
+			if(hljs) {
+				markedOptions.highlight = function(code) {
+					return hljs.highlightAuto(code).value;
+				};
+			}
 		}
 
 
@@ -1492,8 +1561,10 @@ SimpleMDE.prototype.render = function(el) {
 		lineWrapping: (options.lineWrapping === false) ? false : true,
 		allowDropFileTypes: ["text/plain"],
 		placeholder: options.placeholder || el.getAttribute("placeholder") || "",
-		styleSelectedText: (options.styleSelectedText != undefined) ? options.styleSelectedText : true
+		styleSelectedText: (options.styleSelectedText != undefined) ? options.styleSelectedText : !isMobile(),
 	});
+
+	this.codemirror.getScrollerElement().style.minHeight = options.minHeight;
 
 	if(options.forceSync === true) {
 		var cm = this.codemirror;
@@ -1524,6 +1595,32 @@ SimpleMDE.prototype.render = function(el) {
 	setTimeout(function() {
 		temp_cm.refresh();
 	}.bind(temp_cm), 0);
+
+	var editorEl = this.codemirror.getWrapperElement();
+	// 监听拖拽事件
+	editorEl.addEventListener("dragover", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	editorEl.addEventListener("dragenter", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	editorEl.addEventListener("drop", function(e) {
+		// 必须要禁用浏览器默认事件
+		e.preventDefault();
+		e.stopPropagation();
+		var files = this.files || e.dataTransfer.files;
+
+		if(files && files.length > 0) {
+			var file = e.dataTransfer.files[0];
+			if(options && options.onDropImage) {
+				options.onDropImage(file);
+			}
+		}
+	});
 };
 
 // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem throw QuotaExceededError. We're going to detect this and set a variable accordingly.
@@ -1532,7 +1629,7 @@ function isLocalStorageAvailable() {
 		try {
 			localStorage.setItem("smde_localStorage", 1);
 			localStorage.removeItem("smde_localStorage");
-		} catch(e) {
+		} catch (e) {
 			return false;
 		}
 	} else {
@@ -1584,7 +1681,7 @@ SimpleMDE.prototype.autosave = function() {
 			}
 			m = m < 10 ? "0" + m : m;
 
-			el.innerHTML = "Autosaved: " + h + ":" + m + " " + dd;
+			el.innerHTML = "自动保存: " + h + ":" + m + " " + dd;
 		}
 
 		this.autosaveTimeoutId = setTimeout(function() {
@@ -1619,6 +1716,7 @@ SimpleMDE.prototype.createSideBySide = function() {
 		wrapper.parentNode.insertBefore(preview, wrapper.nextSibling);
 	}
 
+	if(this.options.syncSideBySidePreviewScroll === false) return preview;
 	// Syncs scroll  editor -> preview
 	var cScroll = false;
 	var pScroll = false;
@@ -1664,6 +1762,9 @@ SimpleMDE.prototype.createToolbar = function(items) {
 
 	var bar = document.createElement("div");
 	bar.className = "editor-toolbar";
+	if(this.options && this.options.isBottomBar) {
+		bar.style = "border-top: 0;border-bottom: 1px solid #bbb;border-radius: 0 0 4px 4px;";
+	}
 
 	var self = this;
 
@@ -1744,7 +1845,12 @@ SimpleMDE.prototype.createToolbar = function(items) {
 	});
 
 	var cmWrapper = cm.getWrapperElement();
-	cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+	if(this.options && this.options.isBottomBar) {
+		cmWrapper.parentNode.appendChild(bar);
+		cmWrapper.style = "border-radius: 4px 4px 0 0;";
+	} else {
+		cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+	}
 	return bar;
 };
 
@@ -1859,7 +1965,11 @@ SimpleMDE.prototype.createStatusbar = function(status) {
 
 	// Insert the status bar into the DOM
 	var cmWrapper = this.codemirror.getWrapperElement();
-	cmWrapper.parentNode.insertBefore(bar, cmWrapper.nextSibling);
+	if(options && options.isBottomBar) {
+		cmWrapper.parentNode.appendChild(bar);
+	} else {
+		cmWrapper.parentNode.insertBefore(bar, cmWrapper.nextSibling);
+	}
 	return bar;
 };
 
@@ -1867,10 +1977,16 @@ SimpleMDE.prototype.createStatusbar = function(status) {
  * Get or set the text content.
  */
 SimpleMDE.prototype.value = function(val) {
+	var cm = this.codemirror;
 	if(val === undefined) {
-		return this.codemirror.getValue();
+		return cm.getValue();
 	} else {
-		this.codemirror.getDoc().setValue(val);
+		cm.getDoc().setValue(val);
+		if(this.isPreviewActive()) {
+			var wrapper = cm.getWrapperElement();
+			var preview = wrapper.lastChild;
+			preview.innerHTML = this.options.previewRender(val, preview);
+		}
 		return this;
 	}
 };
