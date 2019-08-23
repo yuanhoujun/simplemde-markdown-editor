@@ -334,6 +334,7 @@ simplemde.isPreviewActive(); // returns boolean
 simplemde.isSideBySideActive(); // returns boolean
 simplemde.isFullscreenActive(); // returns boolean
 simplemde.clearAutosavedValue(); // no returned value
+simplemde.setPublishButtonVisible(true or flase) // set publish button visibility
 ```
 
 ## How it works

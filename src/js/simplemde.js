@@ -2141,4 +2141,24 @@ SimpleMDE.prototype.toTextArea = function() {
 	}
 };
 
+/**
+ * 设置发布按钮是否可见
+ * 
+ * @param visible true: 可见 false：不可见
+ */
+SimpleMDE.prototype.setPublishButtonVisible = function(visible) {
+	var el = this.toolbarElements.save;
+	var cls = el.getAttribute("class");
+
+	if(visible) {
+		cls = cls.replace("hide", "");
+		el.setAttribute("class", cls);
+	}
+
+	if(!visible) {
+		cls = cls.concat(" hide");
+		el.setAttribute("class", cls);
+	}
+};
+
 module.exports = SimpleMDE;
