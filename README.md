@@ -12,12 +12,12 @@ WYSIWYG editors that produce HTML are often complex and buggy. Markdown solves t
 
 Via [npm](https://www.npmjs.com/package/simplemde).
 ```
-npm install simplemde --save
+npm install simplemdeplus --save
 ```
 
 Via [bower](https://www.bower.io).
 ```
-bower install simplemde --save
+bower install simplemdeplus --save
 ```
 
 Via [jsDelivr](https://www.jsdelivr.com/).
