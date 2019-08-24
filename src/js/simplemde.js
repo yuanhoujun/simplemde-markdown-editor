@@ -785,6 +785,11 @@ function togglePreview(editor) {
 		preview = document.createElement("div");
 		preview.className = "editor-preview";
 		wrapper.appendChild(preview);
+
+		// 点击预览窗体自动进入编辑模式
+		preview.onclick = function() {
+			togglePreview(editor);
+		};
 	}
 	if(/editor-preview-active/.test(preview.className)) {
 		preview.className = preview.className.replace(
