@@ -14,7 +14,7 @@
         }
 
         .g-mde {
-            width: 800px;
+            width: 662px;
         }
     </style>
 </head>
@@ -40,16 +40,37 @@
 			code: "```"
 		},
 		forceSync: true,
-		hideIcons: false,
+		hideIcons: [
+			"side-by-side", "fullscreen", "guide"
+		],
+		insertTexts: {
+			horizontalRule: ["", "\n\n-----\n\n"],
+			image: ["![](http://", ")"],
+			link: ["[", "](http://)"],
+			table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
+		},
 		indentWithTabs: true,
 		lineWrapping: true,
 		renderingConfig:{
-			singleLineBreaks: false,
-			codeSyntaxHighlighting: true // 需要highlight依赖
+			singleLineBreaks: true,
+			// 需要highlight.js依赖
+			codeSyntaxHighlighting: true,
+			markedOptions: {
+				breaks: true,
+				smartLists: true,
+				smartypants: true,
+				xhtml: true
+			}
 		},
-		showIcons: true,
-		spellChecker: true,
-		isBottomBar: false, // toolbar位置
+		showIcons: [
+			"bold", "italic", "heading", "quote", "ordered-list", "unordered-list",
+			"link", "image", "code", "table", "preview"
+		],
+		spellChecker: false,
+		isBottomBar: true, // toolbar位置
+		minHeight: "200px",
+		toolbarTips: false,
+		placeholder: "你不想说点什么吗？",
 		onDropImage: function(file) {
             var curFile = new FileReader();
 			curFile.readAsDataURL(file);
@@ -63,8 +84,6 @@
 			console.log(value);
 		}
 	});
-	// 默认开启预览模式
-	// simplemde.toggleSideBySide();
 </script>
 </body>
 </html>
