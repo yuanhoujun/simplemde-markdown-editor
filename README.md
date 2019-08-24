@@ -117,6 +117,7 @@ simplemde.value("This text will appear in the editor");
 - **isBottomBar** 标题栏是否在底部位置
 - **onDropImage** function(file)，参数为拖拽的File对象
 - **onPushEvent** function(value)，参数为发布的内容
+- **onChooseImageCompleted**: function(file), it will be called when use image icon to choose image completed
 
 ```JavaScript
 // Most options demonstrate the non-default behavior
