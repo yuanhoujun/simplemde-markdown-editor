@@ -96,7 +96,17 @@ function fixShortcut(name) {
  */
 function createIcon(options, enableTooltips, shortcuts) {
 	options = options || {};
-	var el = document.createElement("button");
+
+	var el = options.type == "file" ? document.createElement("input") : document.createElement("button");
+	if(options.type == "file") {
+		el.type = "file";
+		el.accept = options.accept || "image/*";
+	}
+
+	if(options.id) {
+		el.id = options.id;
+	}
+
 	enableTooltips = (enableTooltips == undefined) ? true : enableTooltips;
 
 	if(options.title && enableTooltips) {
@@ -639,18 +649,18 @@ function drawLink(editor) {
 /**
  * Action for drawing an img.
  */
+// eslint-disable-next-line no-unused-vars
 function drawImage(editor) {
-	var cm = editor.codemirror;
-	var stat = getState(cm);
-	var options = editor.options;
-	var url = "http://";
-	if(options.promptURLs) {
-		url = prompt(options.promptTexts.image);
-		if(!url) {
-			return false;
-		}
+	var el = document.getElementById(toolbarBuiltInButtons.chooseImage.id);
+	el.click();
+}
+
+// eslint-disable-next-line no-unused-vars
+function chooseImage(editor) {
+	var file = document.getElementById(toolbarBuiltInButtons.chooseImage.id).files[0];
+	if(file && editor.options.onChooseImageCompleted) {
+		editor.options.onChooseImageCompleted(file);
 	}
-	_replaceSelection(cm, stat.image, options.insertTexts.image, url);
 }
 
 /**
@@ -1226,6 +1236,14 @@ var toolbarBuiltInButtons = {
 		title: "Insert Image",
 		default: true
 	},
+	"chooseImage": {
+		name: "chooseImage",
+		type: "file",
+		accept: "image/*",
+		onChange: chooseImage,
+		id: "simplemde-choose-image",
+		default: true
+	},
 	"table": {
 		name: "table",
 		action: drawTable,
@@ -1368,7 +1386,7 @@ function SimpleMDE(options) {
 		// Initialize
 		options.toolbar = [];
 
-
+		// console.log(JSON.stringify(toolbarBuiltInButtons));
 		// Loop over the built in buttons, to get the preferred order
 		for(var key in toolbarBuiltInButtons) {
 			if(toolbarBuiltInButtons.hasOwnProperty(key)) {
@@ -1808,6 +1826,13 @@ SimpleMDE.prototype.createToolbar = function(items) {
 				el = createIcon(item, self.options.toolbarTips, self.options.shortcuts);
 			}
 
+			if(item.onChange) {
+				el.onchange = function(e) {
+					e.preventDefault();
+					item.onChange(self);
+				};
+			}
+
 			// bind events, special for info
 			if(item.action) {
 				if(typeof item.action === "function") {
@@ -2010,6 +2035,7 @@ SimpleMDE.toggleOrderedList = toggleOrderedList;
 SimpleMDE.cleanBlock = cleanBlock;
 SimpleMDE.drawLink = drawLink;
 SimpleMDE.drawImage = drawImage;
+SimpleMDE.chooseImage = chooseImage;
 SimpleMDE.drawTable = drawTable;
 SimpleMDE.drawHorizontalRule = drawHorizontalRule;
 SimpleMDE.undo = undo;
@@ -2086,6 +2112,9 @@ SimpleMDE.prototype.toggleSideBySide = function() {
 };
 SimpleMDE.prototype.toggleFullScreen = function() {
 	toggleFullScreen(this);
+};
+SimpleMDE.prototype.chooseImage = function() {
+	chooseImage(this);
 };
 
 SimpleMDE.prototype.isPreviewActive = function() {
