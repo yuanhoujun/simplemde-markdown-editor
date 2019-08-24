@@ -1366,7 +1366,7 @@ function SimpleMDE(options) {
 	if(autoDownloadFA) {
 		var link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css";
+		link.href = "https://kuaiping.yhdm360.com/pub/common/js/font-awesome.min.css";
 		document.getElementsByTagName("head")[0].appendChild(link);
 	}
 
