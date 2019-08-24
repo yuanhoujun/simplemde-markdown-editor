@@ -15,18 +15,6 @@ Via [npm](https://www.npmjs.com/package/simplemde).
 npm install simplemdeplus --save
 ```
 
-Via [bower](https://www.bower.io).
-```
-bower install simplemdeplus --save
-```
-
-Via [jsDelivr](https://www.jsdelivr.com/).
-
-```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sparksuite/simplemde-markdown-editor@1/dist/simplemde.min.css">
-<script src="https://cdn.jsdelivr.net/gh/sparksuite/simplemde-markdown-editor@1/dist/simplemde.min.js"></script>
-```
-
 ## Quick start
 
 After installing, load SimpleMDE on the first textarea on a page

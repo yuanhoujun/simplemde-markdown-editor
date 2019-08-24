@@ -1,6 +1,6 @@
 /**
- * simplemde v1.11.2
- * Copyright Sparksuite, Inc.
+ * simplemdeplus v1.0.0
+ * Copyright 深圳一行代码科技有限公司
  * @link https://github.com/sparksuite/simplemde-markdown-editor
  * @license MIT
  */
