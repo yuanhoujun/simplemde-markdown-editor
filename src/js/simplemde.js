@@ -1244,6 +1244,7 @@ var toolbarBuiltInButtons = {
 	"chooseImage": {
 		name: "chooseImage",
 		type: "file",
+		className: "hide",
 		accept: "image/*",
 		onChange: chooseImage,
 		id: "simplemde-choose-image",
