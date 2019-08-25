@@ -1363,7 +1363,7 @@ function SimpleMDE(options) {
 			if(!styleSheets[i].href)
 				continue;
 
-			if(styleSheets[i].href.indexOf("//maxcdn.bootstrapcdn.com/font-awesome/") > -1) {
+			if(styleSheets[i].href.indexOf("/font-awesome/") > -1) {
 				autoDownloadFA = false;
 			}
 		}
@@ -1372,7 +1372,7 @@ function SimpleMDE(options) {
 	if(autoDownloadFA) {
 		var link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = "https://kuaiping.yhdm360.com/pub/common/js/font-awesome.min.css";
+		link.href = "https://cdn.kuaiping.yhdm360.com/pub/thirdpart/font-awesome-4.7.0/css/font-awesome.min.css";
 		document.getElementsByTagName("head")[0].appendChild(link);
 	}
 
