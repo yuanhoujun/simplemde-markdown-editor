@@ -2022,6 +2022,59 @@ SimpleMDE.prototype.value = function(val) {
 	}
 };
 
+var _interval = null;
+var isRemovingTopBar = false;
+
+function setTopBarIndictor(options) {
+	// 如果TopBar正在移除中，将不能进行任何操作
+	if(isRemovingTopBar) return;
+
+	var editor = options.editor;
+	var cm = editor.codemirror;
+	var wrapper = cm.getWrapperElement();
+	var parent = wrapper.parentNode;
+
+	var cmWidth = wrapper.offsetWidth;
+
+	var topBar = parent.querySelector("#simplemde-top-bar");
+
+	var color = options.color || "red";
+	var height = options.height || "2";
+	var autoRemove = options.autoRemove || true;
+	var visible = options.visible || true;
+
+	var progress = options.progress;
+	if(progress < 0) progress = 0;
+	if(progress > 100) progress = 100;
+
+	var width = options.progress / 100 * cmWidth;
+	var css = "position: relative; left: 0; top:" + height / 2 + "px; background:" + color + "; width:" + width + "px; height: " + height + "px;border-radius: " + height / 2 + "px; z-index: 1000";
+
+	if(!topBar && progress >= 100 && autoRemove) return;
+
+	if(!topBar) {
+		if(visible) {
+			topBar = document.createElement("div");
+			topBar.setAttribute("style", css);
+			topBar.setAttribute("id", "simplemde-top-bar");
+			parent.insertBefore(topBar, wrapper);
+		}
+	} else {
+		if(!visible) {
+			parent.removeChild(topBar);
+		} else {
+			topBar.setAttribute("style", css);
+			if(progress >= 100) {
+				isRemovingTopBar = true;
+				_interval = setInterval(function() {
+					parent.removeChild(topBar);
+					isRemovingTopBar = false;
+					clearInterval(_interval);
+				}, 300);
+			}
+		}
+	}
+}
 
 /**
  * Bind static methods for exports.
@@ -2049,6 +2102,7 @@ SimpleMDE.redo = redo;
 SimpleMDE.togglePreview = togglePreview;
 SimpleMDE.toggleSideBySide = toggleSideBySide;
 SimpleMDE.toggleFullScreen = toggleFullScreen;
+SimpleMDE.setTopBarProgress = setTopBarIndictor;
 
 /**
  * Bind instance methods for exports.
@@ -2195,5 +2249,32 @@ SimpleMDE.prototype.setPublishButtonVisible = function(visible) {
 		el.setAttribute("class", cls);
 	}
 };
+
+/**
+ * 设置Top bar通用属性
+ * 
+ * @param {Object} options 具体参数：
+ * progress: 进度，1~100
+ * color: 颜色 可选，默认为红色
+ * height: 高度 可选，默认为2px
+ * autoRemove: 是否自动移除，设置为true将在进度达到100的时候自动移除掉
+ * visible: 标记是否可见，默认为true
+ */
+SimpleMDE.prototype.setTopBarIndictor = function(options) {
+	var newOptions = {
+		editor: this
+	};
+
+	if(!options || !options.progress) {
+		throw "Lack of necessary parameter：progress, range: 0 ~ 100";
+	}
+
+	for(var attr in options) {
+		newOptions[attr] = options[attr];
+	}
+
+	setTopBarIndictor(newOptions);
+};
+
 
 module.exports = SimpleMDE;

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="debug/simplemde.css" rel="stylesheet">
-    <link href="https://cdn.kuaiping.yhdm360.com/pub/common/js/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.kuaiping.yhdm360.com/pub/common/js/github-gist.min.css" rel="stylesheet">
+    <link href="https://cdn.kuaiping.yhdm360.com/pub/thirdpart/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.kuaiping.yhdm360.com/pub/thirdpart/highlight/highlight.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
         }
 
@@ -22,8 +22,10 @@
 <div class="g-mde">
     <textarea></textarea>
 </div>
+<button id="btn-set-top-bar">设置进度</button>
+
 <script src="debug/simplemde.debug.js"></script>
-<script src="https://cdn.kuaiping.yhdm360.com/pub/common/js/highlight.min.js"></script>
+<script src="https://cdn.kuaiping.yhdm360.com/pub/thirdpart/highlight/highlight.min.js"></script>
 <script>
 	var simplemde = new SimpleMDE({
 		element: document.querySelector('textarea'),
@@ -84,6 +86,26 @@
 			console.log(value);
 		}
 	});
+
+	
+	document.getElementById("btn-set-top-bar").onclick = function(e) {
+		var progress = 0;
+
+		var interval = setInterval(function() {
+			console.log(progress);
+			progress += 10;
+			simplemde.setTopBarProgress({
+				progress: progress,
+				color: "#00ff00",
+				height: 2,
+				autoRemove: false
+			});
+			if (progress >= 110) {
+				clearInterval(interval);
+			}
+		}, 1000)
+	}
 </script>
+
 </body>
 </html>

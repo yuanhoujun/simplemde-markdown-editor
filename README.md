@@ -324,6 +324,17 @@ simplemde.isSideBySideActive(); // returns boolean
 simplemde.isFullscreenActive(); // returns boolean
 simplemde.clearAutosavedValue(); // no returned value
 simplemde.setPublishButtonVisible(true or flase) // set publish button visibility
+/**
+ * Set top bar indictor's properties
+ * 
+ * @param {Object} options params as follows:
+ * progress: 1~100
+ * color: background color optional
+ * height: optional default: 2px
+ * autoRemove: whether need auto remove, top bar indictor will be removed if set it to true, default true
+ * visible: set top bar indictor visibility, default true
+ */
+simplemde.setTopBarIndictor(options);
 ```
 
 ## How it works
