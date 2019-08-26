@@ -335,6 +335,14 @@ simplemde.setPublishButtonVisible(true or flase) // set publish button visibilit
  * visible: set top bar indictor visibility, default true
  */
 simplemde.setTopBarIndictor(options);
+/**
+ * Set publish button basic style.
+ * 
+ * @param {Object} options params as follows:
+ * text: button text
+ * enable: enable or disable button.
+ * /
+simplemde.setPublishButton(options);
 ```
 
 ## How it works

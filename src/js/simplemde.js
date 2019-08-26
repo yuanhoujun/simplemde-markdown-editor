@@ -103,6 +103,12 @@ function createIcon(options, enableTooltips, shortcuts) {
 		el.accept = options.accept || "image/*";
 	}
 
+	console.log(">>>>>>" + options.needShowText + "<<<<<<");
+
+	if(options.needShowText) {
+		el.innerHTML = options.title;
+	}
+
 	if(options.id) {
 		el.id = options.id;
 	}
@@ -1301,7 +1307,9 @@ var toolbarBuiltInButtons = {
 		action: pushEditorData,
 		className: "push-data",
 		title: "发布",
-		default: true
+		default: true,
+		needShowText: true,
+		id: "simplemde-btn-publish"
 	},
 	"separator-5": {
 		name: "separator-5"
@@ -2076,6 +2084,21 @@ function setTopBarIndictor(options) {
 	}
 }
 
+function setPublishButton(options) {
+	var publishButton = document.getElementById(toolbarBuiltInButtons.save.id);
+	if(options.text) {
+		publishButton.innerHTML = options.text;
+	}
+
+	var enable = options.enable || true;
+
+	if(enable) {
+		publishButton.removeAttribute("disabled");
+	} else {
+		publishButton.setAttribute("disabled", "");
+	}
+}
+
 /**
  * Bind static methods for exports.
  */
@@ -2103,6 +2126,7 @@ SimpleMDE.togglePreview = togglePreview;
 SimpleMDE.toggleSideBySide = toggleSideBySide;
 SimpleMDE.toggleFullScreen = toggleFullScreen;
 SimpleMDE.setTopBarProgress = setTopBarIndictor;
+SimpleMDE.setPublishButton = setPublishButton;
 
 /**
  * Bind instance methods for exports.
@@ -2276,5 +2300,16 @@ SimpleMDE.prototype.setTopBarIndictor = function(options) {
 	setTopBarIndictor(newOptions);
 };
 
+SimpleMDE.prototype.setPublishButton = function(options) {
+	var newOptions = {
+		editor: this
+	};
+
+	for(var attr in options) {
+		newOptions[attr] = options[attr];
+	}
+
+	setPublishButton(newOptions);
+};
 
 module.exports = SimpleMDE;

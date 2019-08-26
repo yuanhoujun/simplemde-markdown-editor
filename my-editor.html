@@ -88,22 +88,29 @@
 	});
 
 	
-	document.getElementById("btn-set-top-bar").onclick = function(e) {
-		var progress = 0;
+	// document.getElementById("btn-set-top-bar").onclick = function(e) {
+	// 	var progress = 0;
 
-		var interval = setInterval(function() {
-			console.log(progress);
-			progress += 10;
-			simplemde.setTopBarProgress({
-				progress: progress,
-				color: "#00ff00",
-				height: 2,
-				autoRemove: false
-			});
-			if (progress >= 110) {
-				clearInterval(interval);
-			}
-		}, 1000)
+	// 	var interval = setInterval(function() {
+	// 		console.log(progress);
+	// 		progress += 10;
+	// 		simplemde.setTopBarProgress({
+	// 			progress: progress,
+	// 			color: "#00ff00",
+	// 			height: 2,
+	// 			autoRemove: false
+	// 		});
+	// 		if (progress >= 110) {
+	// 			clearInterval(interval);
+	// 		}
+	// 	}, 1000)
+	// }
+
+	document.getElementById("btn-set-top-bar").onclick = function(e) {
+		simplemde.setPublishButton({
+			text: "发布中...",
+			enable: false
+		})
 	}
 </script>
 
