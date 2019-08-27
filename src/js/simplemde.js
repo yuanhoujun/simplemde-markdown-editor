@@ -1607,9 +1607,12 @@ SimpleMDE.prototype.render = function(el) {
 
 	this.gui = {};
 
+	this.gui.tooltipBar = this.createTooltipBar();
+
 	if(options.toolbar !== false) {
 		this.gui.toolbar = this.createToolbar();
 	}
+
 	if(options.status !== false) {
 		this.gui.statusbar = this.createStatusbar();
 	}
@@ -2012,6 +2015,44 @@ SimpleMDE.prototype.createStatusbar = function(status) {
 	return bar;
 };
 
+SimpleMDE.prototype.createTooltipBar = function() {
+	var el = document.createElement("div");
+	el.id = "simplemde-editor-tooltip-bar";
+	el.className = "editor-tooltip-bar hide";
+
+	var warnIcon = document.createElement("div");
+	warnIcon.className = "editor-tooltip-bar-icon fa fa-warning";
+	el.appendChild(warnIcon);
+
+	var textSpan = document.createElement("div");
+	textSpan.id = "simplemde-tooltip-bar-text";
+	textSpan.className = "editor-tooltip-bar-text";
+	textSpan.innerHTML = "aojiofdsjfpoijsdopifjdoaisjfopasjfoipajofpjdaopdfjoipajfoijdsaoifjaosijfopiajofijadsopjfoipjaiopfdjaopijfdopiasjfop";
+	el.appendChild(textSpan);
+
+	var closeIcon = document.createElement("div");
+	closeIcon.className = "editor-tooltip-bar-close";
+	closeIcon.innerHTML = "x";
+	el.appendChild(closeIcon);
+
+	closeIcon.onclick = function() {
+		var cls = this.parentNode.className;
+		var isVisible = !(cls && cls.indexOf("hide") >= 0);
+
+		if(isVisible) {
+			cls += " hide";
+			this.parentNode.setAttribute("class", cls);
+		}
+	};
+
+	var cm = this.codemirror;
+	var wrapper = cm.getWrapperElement();
+	wrapper.parentNode.appendChild(el);
+
+	return el;
+};
+
+
 /**
  * Get or set the text content.
  */
@@ -2099,6 +2140,46 @@ function setPublishButton(options) {
 	}
 }
 
+function setTooltipBar(options) {
+	var tooltipBar = document.getElementById("simplemde-editor-tooltip-bar");
+
+	var visible = options.visible == true;
+
+	var cls = tooltipBar.getAttribute("class");
+	var isVisible = !(cls && cls.indexOf("hide") >= 0);
+
+	if(visible && !isVisible) {
+		cls = cls.replace(" hide", "");
+		tooltipBar.setAttribute("class", cls);
+	}
+
+	if(!visible && isVisible) {
+		cls += " hide";
+		tooltipBar.setAttribute("class", cls);
+		return;
+	}
+
+	var tooltipBarContentEl = tooltipBar.querySelector("#simplemde-tooltip-bar-text");
+	tooltipBarContentEl.innerHTML = "";
+
+	if(options.content) {
+		tooltipBarContentEl.innerHTML = options.content;
+	}
+
+	var cssText = tooltipBar.style.cssText;
+
+	if(options.backgroundColor) {
+		if(!cssText || cssText.indexOf("background:") < 0) {
+			tooltipBar.style.cssText += "background: " + options.backgroundColor + ";";
+		}
+	}
+
+	var color = options.color || "white";
+	if(!cssText || cssText.indexOf("color:") < 0) {
+		tooltipBar.style.cssText += "color: " + color + ";";
+	}
+}
+
 /**
  * Bind static methods for exports.
  */
@@ -2127,6 +2208,7 @@ SimpleMDE.toggleSideBySide = toggleSideBySide;
 SimpleMDE.toggleFullScreen = toggleFullScreen;
 SimpleMDE.setTopBarProgress = setTopBarIndictor;
 SimpleMDE.setPublishButton = setPublishButton;
+SimpleMDE.setTooltipBar = setTooltipBar;
 
 /**
  * Bind instance methods for exports.
@@ -2310,6 +2392,22 @@ SimpleMDE.prototype.setPublishButton = function(options) {
 	}
 
 	setPublishButton(newOptions);
+};
+
+SimpleMDE.prototype.setTooltipBar = function(options) {
+	var newOptions = {
+		editor: this
+	};
+
+	if(!options || !options.content) {
+		throw "Content can't empty!";
+	}
+
+	for(var attr in options) {
+		newOptions[attr] = options[attr];
+	}
+
+	setTooltipBar(newOptions);
 };
 
 module.exports = SimpleMDE;

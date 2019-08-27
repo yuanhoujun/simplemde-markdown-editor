@@ -343,6 +343,16 @@ simplemde.setTopBarIndictor(options);
  * enable: enable or disable button.
  * /
 simplemde.setPublishButton(options);
+/**
+ * Set tooltip bar basic style.
+ * 
+ * @param {Object} options params as follows:
+ * content: content
+ * color: text color
+ * backgroundColor
+ * visible: set tool tip bar visiblility, default false. 
+ * /
+simplemde.setTooltipBar(options);
 ```
 
 ## How it works
