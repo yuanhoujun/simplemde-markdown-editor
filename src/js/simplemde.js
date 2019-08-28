@@ -1120,6 +1120,11 @@ function extend(target) {
 	return target;
 }
 
+function computeWordCount(editor) {
+	var cm = editor.codemirror;
+	return wordCount(cm.getValue());
+}
+
 /* The right word count in respect for CJK. */
 function wordCount(data) {
 	var pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
@@ -2209,6 +2214,7 @@ SimpleMDE.toggleFullScreen = toggleFullScreen;
 SimpleMDE.setTopBarProgress = setTopBarIndictor;
 SimpleMDE.setPublishButton = setPublishButton;
 SimpleMDE.setTooltipBar = setTooltipBar;
+SimpleMDE.wordCount = computeWordCount;
 
 /**
  * Bind instance methods for exports.
@@ -2408,6 +2414,10 @@ SimpleMDE.prototype.setTooltipBar = function(options) {
 	}
 
 	setTooltipBar(newOptions);
+};
+
+SimpleMDE.prototype.wordCount = function() {
+	return computeWordCount(this);
 };
 
 module.exports = SimpleMDE;

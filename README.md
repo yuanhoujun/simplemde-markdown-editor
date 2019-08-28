@@ -353,6 +353,7 @@ simplemde.setPublishButton(options);
  * visible: set tool tip bar visiblility, default false. 
  * /
 simplemde.setTooltipBar(options);
+simplemde.wordCount(); // return word count;
 ```
 
 ## How it works
