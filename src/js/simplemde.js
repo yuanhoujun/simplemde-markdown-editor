@@ -1313,8 +1313,7 @@ var toolbarBuiltInButtons = {
 		className: "push-data",
 		title: "发布",
 		default: true,
-		needShowText: true,
-		id: "simplemde-btn-publish"
+		needShowText: true
 	},
 	"separator-5": {
 		name: "separator-5"
@@ -2131,12 +2130,14 @@ function setTopBarIndictor(options) {
 }
 
 function setPublishButton(options) {
-	var publishButton = document.getElementById(toolbarBuiltInButtons.save.id);
+	var editor = options.editor;
+	var publishButton = editor.toolbarElements.save;
+
 	if(options.text) {
 		publishButton.innerHTML = options.text;
 	}
 
-	var enable = options.enable || true;
+	var enable = options.enable != undefined ? options.enable : true;
 
 	if(enable) {
 		publishButton.removeAttribute("disabled");
