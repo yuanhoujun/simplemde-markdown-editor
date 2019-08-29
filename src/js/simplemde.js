@@ -2147,7 +2147,8 @@ function setPublishButton(options) {
 }
 
 function setTooltipBar(options) {
-	var tooltipBar = document.getElementById("simplemde-editor-tooltip-bar");
+	var editor = options.editor;
+	var tooltipBar = editor.gui.tooltipBar;
 
 	var visible = options.visible == true;
 
