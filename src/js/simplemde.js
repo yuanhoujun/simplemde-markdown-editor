@@ -2087,7 +2087,7 @@ function setTopBarIndictor(options) {
 
 	var cmWidth = wrapper.offsetWidth;
 
-	var topBar = parent.querySelector("#simplemde-top-bar");
+	var topBar = editor.gui.topBar;
 
 	var color = options.color || "red";
 	var height = options.height || "2";
@@ -2107,18 +2107,20 @@ function setTopBarIndictor(options) {
 		if(visible) {
 			topBar = document.createElement("div");
 			topBar.setAttribute("style", css);
-			topBar.setAttribute("id", "simplemde-top-bar");
+			editor.gui.topBar = topBar;
 			parent.insertBefore(topBar, wrapper);
 		}
 	} else {
 		if(!visible) {
 			parent.removeChild(topBar);
+			editor.gui.topBar = null;
 		} else {
 			topBar.setAttribute("style", css);
 			if(progress >= 100) {
 				isRemovingTopBar = true;
 				_interval = setInterval(function() {
 					parent.removeChild(topBar);
+					editor.gui.topBar = null;
 					isRemovingTopBar = false;
 					clearInterval(_interval);
 				}, 300);
@@ -2210,7 +2212,7 @@ SimpleMDE.redo = redo;
 SimpleMDE.togglePreview = togglePreview;
 SimpleMDE.toggleSideBySide = toggleSideBySide;
 SimpleMDE.toggleFullScreen = toggleFullScreen;
-SimpleMDE.setTopBarProgress = setTopBarIndictor;
+SimpleMDE.setTopBarIndictor = setTopBarIndictor;
 SimpleMDE.setPublishButton = setPublishButton;
 SimpleMDE.setTooltipBar = setTooltipBar;
 SimpleMDE.wordCount = computeWordCount;
