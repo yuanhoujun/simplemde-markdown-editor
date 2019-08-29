@@ -103,8 +103,6 @@ function createIcon(options, enableTooltips, shortcuts) {
 		el.accept = options.accept || "image/*";
 	}
 
-	console.log(">>>>>>" + options.needShowText + "<<<<<<");
-
 	if(options.needShowText) {
 		el.innerHTML = options.title;
 	}
@@ -657,13 +655,14 @@ function drawLink(editor) {
  */
 // eslint-disable-next-line no-unused-vars
 function drawImage(editor) {
-	var el = document.getElementById(toolbarBuiltInButtons.chooseImage.id);
+	var el = editor.toolbarElements.chooseImage;
 	el.click();
 }
 
 // eslint-disable-next-line no-unused-vars
 function chooseImage(editor) {
-	var file = document.getElementById(toolbarBuiltInButtons.chooseImage.id).files[0];
+	var file = editor.toolbarElements.chooseImage.files[0];
+
 	if(file && editor.options.onChooseImageCompleted) {
 		editor.options.onChooseImageCompleted(file);
 	}
@@ -1258,7 +1257,6 @@ var toolbarBuiltInButtons = {
 		className: "hide",
 		accept: "image/*",
 		onChange: chooseImage,
-		id: "simplemde-choose-image",
 		default: true
 	},
 	"table": {
