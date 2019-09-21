@@ -666,6 +666,7 @@ function chooseImage(editor) {
 	if(file && editor.options.onChooseImageCompleted) {
 		editor.options.onChooseImageCompleted(file);
 	}
+	editor.toolbarElements.chooseImage.value = "";
 }
 
 /**
