@@ -1801,7 +1801,6 @@ SimpleMDE.prototype.createToolbar = function(items) {
 	var bar = document.createElement("div");
 	bar.className = "editor-toolbar";
 	if(this.options && this.options.isBottomBar) {
-		bar.style = "border-top: 0;border-bottom: 1px solid #bbb;border-radius: 0 0 4px 4px;";
 		bar.style.borderTop = "0";
 		bar.style.borderBottom = "1px solid #bbb";
 		bar.style.borderLeft = "1px solid #bbb";
