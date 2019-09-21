@@ -1,4 +1,4 @@
-/*global require,module*/
+/* eslint-disable no-prototype-builtins */
 "use strict";
 var CodeMirror = require("codemirror");
 require("codemirror/addon/edit/continuelist.js");
@@ -1801,6 +1801,10 @@ SimpleMDE.prototype.createToolbar = function(items) {
 	bar.className = "editor-toolbar";
 	if(this.options && this.options.isBottomBar) {
 		bar.style = "border-top: 0;border-bottom: 1px solid #bbb;border-radius: 0 0 4px 4px;";
+		bar.style.borderTop = "0";
+		bar.style.borderBottom = "1px solid #bbb";
+		bar.style.borderLeft = "1px solid #bbb";
+		bar.style.borderRight = "1px solid #bbb";
 	}
 
 	var self = this;
@@ -1891,7 +1895,6 @@ SimpleMDE.prototype.createToolbar = function(items) {
 	var cmWrapper = cm.getWrapperElement();
 	if(this.options && this.options.isBottomBar) {
 		cmWrapper.parentNode.appendChild(bar);
-		cmWrapper.style = "border-radius: 4px 4px 0 0;";
 	} else {
 		cmWrapper.parentNode.insertBefore(bar, cmWrapper);
 	}
