@@ -94,7 +94,7 @@ function fixShortcut(name) {
 /**
  * Create icon element for toolbar.
  */
-function createIcon(options, enableTooltips, shortcuts) {
+function createIcon(options, enableTooltips, shortcuts, self) {
 	options = options || {};
 
 	var el = options.type == "file" ? document.createElement("input") : document.createElement("button");
@@ -124,6 +124,16 @@ function createIcon(options, enableTooltips, shortcuts) {
 
 	el.tabIndex = -1;
 	el.className = options.className;
+
+	// 仅针对发布按钮进行处理
+	if(options.name == toolbarBuiltInButtons.save.name) {
+		if(self.options.isBottomBar) {
+			el.style.borderRadius = "0 0 4px 0";
+		} else {
+			el.style.borderRadius = "0 4px 0 0";
+		}
+	}
+
 	return el;
 }
 
@@ -1659,6 +1669,13 @@ SimpleMDE.prototype.render = function(el) {
 			}
 		}
 	});
+
+	// 处理弧度问题：根据Toolbar放置位置进行处理
+	if(options && options.isBottomBar) {
+		editorEl.style.borderRadius = "4px 4px 0 0";
+	} else {
+		editorEl.style.borderRadius = "0 0 4px 4px";
+	}
 };
 
 // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem throw QuotaExceededError. We're going to detect this and set a variable accordingly.
@@ -1805,6 +1822,9 @@ SimpleMDE.prototype.createToolbar = function(items) {
 		bar.style.borderBottom = "1px solid #bbb";
 		bar.style.borderLeft = "1px solid #bbb";
 		bar.style.borderRight = "1px solid #bbb";
+		bar.style.borderRadius = "0 0 4px 4px";
+	} else {
+		bar.style.borderRadius = "4px 4px 0 0";
 	}
 
 	var self = this;
@@ -1846,7 +1866,7 @@ SimpleMDE.prototype.createToolbar = function(items) {
 			if(item === "|") {
 				el = createSep();
 			} else {
-				el = createIcon(item, self.options.toolbarTips, self.options.shortcuts);
+				el = createIcon(item, self.options.toolbarTips, self.options.shortcuts, self);
 			}
 
 			if(item.onChange) {
